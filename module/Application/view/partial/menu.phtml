@@ -1,0 +1,29 @@
+<ul class="nav navbar-nav side-nav">
+<?php foreach ($this->container as $page): ?>
+   <li <?php echo $page->isActive()? 'class="active"' : '' ?>>
+   <a href="<?= $page->getHref() ?>"><?= $this->translate($page->getLabel()) ?></a>
+   </li>
+<?php endforeach ?>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <?php
+      //On gère ici l'affichage des langue dans la navigation on change la
+      //couleur du drapeau selon la langue
+        if($this->navigation()->getTranslator()->getLocale() == 'fr_FR')
+        {
+          echo '<span class="flag fr"></span> FR <span class="caret"></span>';
+        } else {
+          echo '<span class="flag gb"></span> GB <span class="caret"></span>';
+        }
+      ?>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="<?php echo $this->url('changelocale', array('locale'=>'fr_FR', 'redirecturl'=>urlencode($this->absoluteUrl()))); ?>">
+      <span class="flag fr"></span> Français
+      </a></li>
+      <li><a href="<?php echo $this->url('changelocale', array('locale'=>'en_US', 'redirecturl'=>urlencode($this->absoluteUrl()))); ?>">
+      <span class="flag gb"></span> English
+      </a></li>
+    </ul>
+  </li>
+</ul>
