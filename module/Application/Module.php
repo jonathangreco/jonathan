@@ -28,7 +28,7 @@ class Module
         if(!$sessionContainer->offsetExists('mylocale')){
 
             // -------WARNING-------------- Un truc a revoir ici
-            $sessionContainer->offsetSet('mylocale', \Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']));
+            $sessionContainer->offsetSet('mylocale', 'fr_FR');
         }
         // mise en place du service de traduction
         $translator = $e->getApplication()->getServiceManager()->get('translator');

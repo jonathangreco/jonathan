@@ -1,6 +1,7 @@
 !.gitignore
 .composer
 composer
+symfony
 zendframework
 autoload.php
 doctrine
