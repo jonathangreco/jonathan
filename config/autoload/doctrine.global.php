@@ -15,4 +15,6 @@ return array(
           'driverOptions' => array (1002 => 'SET NAMES utf8'),
         )
       ),
-)));
+    ),
+  )
+);

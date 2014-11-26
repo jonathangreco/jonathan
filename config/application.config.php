@@ -1,18 +1,17 @@
 <?php
 return array(
     'modules' => array(
+        'Application',
         'DoctrineModule',
         'DoctrineORMModule',
         'ZfcBase',
         'ZfcUser',
-        //'ZfcUserDoctrineORM',
+        'ZfcUserDoctrineORM',
         'ZendDeveloperTools',
         'Admin',
-        'Application',
         //'ZfcRbac',
     ),
     'module_listener_options' => array(
-
         'module_paths' => array(
             './module',
             './vendor',

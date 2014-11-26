@@ -1,10 +1,12 @@
 <?php
-
+/**
+ * Entité utilisateur, pour l'instant un soucis : ZfcUser mapp aussi son entité en même temps que celle ci...
+ */
 namespace Application\Entity;
 
 use ZfcRbac\Identity\IdentityInterface;
+// A partir d'une entité perso, on as besoin d'implémenter une interface ZfcUser
 use ZfcUser\Entity\UserInterface;
-use ZfcUser\Entity\User as ZfcUserUser;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -23,7 +25,7 @@ class User implements IdentityInterface, UserInterface
 	protected $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      * @var string
      */
     protected $username;
@@ -35,7 +37,7 @@ class User implements IdentityInterface, UserInterface
     protected $email;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      * @var string
      */
     protected $displayName;
@@ -47,7 +49,7 @@ class User implements IdentityInterface, UserInterface
     protected $password;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      * @var int
      */
     protected $state;

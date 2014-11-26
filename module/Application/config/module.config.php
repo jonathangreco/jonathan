@@ -6,6 +6,7 @@
  * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
+namespace Application;
 
 return array(
     'router' => array(
@@ -71,6 +72,7 @@ return array(
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
+            'zfcuser_doctrine_em' => 'Doctrine\ORM\EntityManager'
         ),
         'factories' => array(
             'default' => 'Zend\Navigation\Service\DefaultNavigationFactory',
@@ -102,6 +104,9 @@ return array(
         ),
         'factories' => array(
             'Application\Controller\Index' => 'Application\Factory\IndexControllerFactory',
+        ),
+        'aliases' => array(
+            'zfcuser_doctrine_em' => 'Doctrine\ORM\EntityManager',
         ),
     ),
     'view_manager' => array(
@@ -137,29 +142,19 @@ return array(
     ),
     'doctrine' => array(
         'driver' => array(
-            'application_entities' => array(
-            'class' =>'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-            'cache' => 'array',
-            'paths' => array(__DIR__ . '/../src/Application/Entity')
+          'zfuser_entities' =>array(
+               'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+               'paths' => array(__DIR__ .'/../src/Application/Entity')
+          ),
+          'orm_default' => array(
+            'drivers' => array(
+                'Application\Entity' => 'zfuser_entities',
             ),
-
-            'zfcuser_entity' => array(
-                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'paths' =>  array(__DIR__ . '/../src/Application/Entity'),
-            ),
-            'orm_default' => array(
-                'drivers' => array(
-                'Application\Entity' => 'application_entities'
-                )
-            )
-        )
+          )
+        ),
     ),
-
     'zfcuser' => array(
-        // telling ZfcUser to use our own class
-        'user_entity_class'       => 'Application\Entity\User',
-        // telling ZfcUserDoctrineORM to skip the entities it defines
+        'user_entity_class' => 'Application\Entity\User',
         'enable_default_entities' => false,
     ),
-
 );
