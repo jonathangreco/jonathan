@@ -82,4 +82,11 @@ return array(
             )
         )
     ),
+    'zfc_rbac' => array(
+        'guards' => array(
+            'ZfcRbac\Guard\RouteGuard' => array(
+                'backend*' => array('admin'),
+            )
+        )
+    ),
 );

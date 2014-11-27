@@ -13,6 +13,7 @@ use ZfcRbac\Permission\PermissionInterface;
 /**
  * @ORM\Entity
  * @ORM\Table(name="roles")
+ * @ORM\Entity(repositoryClass="Application\Repository\HierarchicalRoleRepository")
  */
 class HierarchicalRole implements HierarchicalRoleInterface
 {

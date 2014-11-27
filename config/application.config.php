@@ -7,9 +7,9 @@ return array(
         'ZfcBase',
         'ZfcUser',
         'ZfcUserDoctrineORM',
+        'ZfcRbac',
         'ZendDeveloperTools',
         'Admin',
-        //'ZfcRbac',
     ),
     'module_listener_options' => array(
         'module_paths' => array(

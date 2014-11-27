@@ -28,27 +28,14 @@ return [
          * Please note that when an identity is found, it MUST implements the ZfcRbac\Identity\IdentityProviderInterface
          * interface, otherwise it will throw an exception.
          */
-        'identity_provider' => 'ZfcRbac\Identity\AuthenticationIdentityProvider',
+        //'identity_provider' => 'ZfcRbac\Identity\AuthenticationIdentityProvider',
 
         /**
          * Set the guest role
          *
          * This role is used by the authorization service when the authentication service returns no identity
          */
-        // 'guest_role' => 'guest',
-
-        /**
-         * Set the guards
-         *
-         * You must comply with the various options of guards. The format must be of the following format:
-         *
-         *      'guards' => [
-         *          'ZfcRbac\Guard\RouteGuard' => [
-         *              // options
-         *          ]
-         *      ]
-         */
-        // 'guards' => [],
+        'guest_role' => 'guest',
 
         /**
          * As soon as one rule for either route or controller is specified, a guard will be automatically
@@ -60,7 +47,7 @@ return [
          *
          * DENY is the most secure way, but it is more work for the developer
          */
-        // 'protection_policy' => \ZfcRbac\Guard\GuardInterface::POLICY_ALLOW,
+        'protection_policy' => \ZfcRbac\Guard\GuardInterface::POLICY_DENY,
 
         /**
          * Configuration for role provider
@@ -77,7 +64,13 @@ return [
          *
          * Supported options depend of the role provider, so please refer to the official documentation
          */
-        'role_provider' => [],
+        'role_provider' => [            
+            'ZfcRbac\Role\ObjectRepositoryRoleProvider' => [
+                'object_manager'     => 'doctrine.entitymanager.orm_default',
+                'class_name'         => 'Application\Entity\HierarchicalRole',
+                'role_name_property' => 'name'
+            ]
+        ],
 
         /**
          * Configure the unauthorized strategy. It is used to render a template whenever a user is unauthorized

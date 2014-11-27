@@ -72,7 +72,8 @@ return array(
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
-            'zfcuser_doctrine_em' => 'Doctrine\ORM\EntityManager'
+            'zfcuser_doctrine_em' => 'Doctrine\ORM\EntityManager',
+            'Zend\Authentication\AuthenticationService' => 'zfcuser_auth_service',
         ),
         'factories' => array(
             'default' => 'Zend\Navigation\Service\DefaultNavigationFactory',
@@ -104,9 +105,6 @@ return array(
         ),
         'factories' => array(
             'Application\Controller\Index' => 'Application\Factory\IndexControllerFactory',
-        ),
-        'aliases' => array(
-            'zfcuser_doctrine_em' => 'Doctrine\ORM\EntityManager',
         ),
     ),
     'view_manager' => array(
@@ -140,21 +138,33 @@ return array(
             ),
         ),
     ),
-    'doctrine' => array(
+    'doctrine'        => array(
         'driver' => array(
-          'zfuser_entities' =>array(
-               'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-               'paths' => array(__DIR__ .'/../src/Application/Entity')
-          ),
-          'orm_default' => array(
-            'drivers' => array(
-                'Application\Entity' => 'zfuser_entities',
+            'application_entity' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'paths' => __DIR__ . '/../src/' . __NAMESPACE__ . '/Entity',
             ),
-          )
-        ),
+            'orm_default'  => array(
+                'drivers' => array(
+                    __NAMESPACE__ . '\Entity' => 'application_entity',
+                )
+            )
+        )
     ),
     'zfcuser' => array(
         'user_entity_class' => 'Application\Entity\User',
         'enable_default_entities' => false,
+    ),
+    'zfc_rbac' => array(
+        'guards' => array(
+            'ZfcRbac\Guard\RouteGuard' => array(
+                'home' => array('*'),
+                'changelocale' => array('*'),
+                'doctrine_orm_module_yuml' => array('*'),
+                'zfcuser/login' => array('guest'),
+                'zfcuser/register' => array('guest'),
+                'zfcuser*' => array('user'),
+            )
+        )
     ),
 );
