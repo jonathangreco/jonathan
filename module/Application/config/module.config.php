@@ -76,9 +76,12 @@ return array(
             'Zend\Authentication\AuthenticationService' => 'zfcuser_auth_service',
         ),
         'factories' => array(
-            'default' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'navigation/logged' => 'Application\Navigation\LoggedNavigation',
             'translate' => 'Zend\I18n\Translator\TranslatorServiceFactory',
             'Application\Service\IndexService' => 'Application\Factory\IndexServiceFactory',
+            'Application\Listener\AuthorizationListener' => 'Application\Factory\AuthorizationFactory',
+            'Application\Listener\RegisterUserListener' => 'Application\Factory\RegisterUserFactory',
         ),
         'invokables' => array(
             'FlashMessageListener' => 'Application\Listener\FlashMessageListener',
@@ -136,6 +139,26 @@ return array(
                 'label' => 'Home',
                 'route' => 'home',
             ),
+            'zfcuser' => array(
+                'label' => 'Account',
+                'route' => 'zfcuser',
+                'permission' => 'seeAccount',
+            ),
+            'backend' => array(
+                'label' => 'Backend',
+                'route' => 'backend',
+                'permission' => 'admin'
+            ),
+        ),
+        'logged' => array(            
+            'logout' => array(
+                'label' => 'Logout',
+                'route' => 'zfcuser/logout',
+            ),
+            'login' => array(
+                'label' => 'Login',
+                'route' => 'zfcuser/login',
+            ),
         ),
     ),
     'doctrine'        => array(
@@ -154,6 +177,7 @@ return array(
     'zfcuser' => array(
         'user_entity_class' => 'Application\Entity\User',
         'enable_default_entities' => false,
+        'new_user_default_role' => 'user'
     ),
     'zfc_rbac' => array(
         'guards' => array(
@@ -162,6 +186,7 @@ return array(
                 'changelocale' => array('*'),
                 'doctrine_orm_module_yuml' => array('*'),
                 'zfcuser/login' => array('guest'),
+                'zfcuser/logout' => array('user'),
                 'zfcuser/register' => array('guest'),
                 'zfcuser*' => array('user'),
             )

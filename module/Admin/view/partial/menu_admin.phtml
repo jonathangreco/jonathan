@@ -1,7 +1,7 @@
 <ul class="nav navbar-nav side-nav">
 <?php foreach ($this->container as $page): ?>
    <li <?php echo $page->isActive()? 'class="active"' : '' ?>>
-   <a href="<?= $page->getHref() ?>"><?= $this->translate($page->getLabel()) ?></a>
+    <a href="<?= $page->getHref() ?>"><?= $this->translate($page->getLabel()) ?></a>
    </li>
 <?php endforeach ?>
   <li class="dropdown">

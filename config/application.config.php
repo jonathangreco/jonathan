@@ -1,7 +1,6 @@
 <?php
 return array(
     'modules' => array(
-        'Application',
         'DoctrineModule',
         'DoctrineORMModule',
         'ZfcBase',
@@ -9,6 +8,8 @@ return array(
         'ZfcUserDoctrineORM',
         'ZfcRbac',
         'ZendDeveloperTools',
+        'ZfcAdmin',
+        'Application',
         'Admin',
     ),
     'module_listener_options' => array(

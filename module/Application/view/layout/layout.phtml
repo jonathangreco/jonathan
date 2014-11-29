@@ -37,7 +37,16 @@
           <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/zf2-logo.png') ?>" alt="Zend Framework 2"/>&nbsp;<?php echo $this->translate('Skeleton Application') ?></a>
         </div>
         <div class="collapse navbar-collapse">
-           <?php echo $this->navigation('default')->menu()->setPartial('partial/menu')->render();?>
+           <?php
+            $options = array(
+              'ulClass' => 'nav navbar-nav',
+              'minDepth' => '0',
+              'maxDepth' => '3',
+            );
+            echo $this->navigation('navigation')->menu()->renderMenu('navigation', $options);
+            echo $this->navigation('navigation/logged')->menu()->setPartial('partial/loggedNav');
+            echo $this->navigation('navigation')->menu()->setPartial('partial/localeNav');
+            ?>
         </div><!--/.nav-collapse -->
       </div>
     </nav>

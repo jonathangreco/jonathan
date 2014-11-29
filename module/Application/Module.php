@@ -39,6 +39,23 @@ class Module
         $moduleRouteListener->attach($eventManager);
         $FlashMessenger = $e->getApplication()->getServiceManager()->get('FlashMessageListener');
         $FlashMessenger->attach($eventManager);
+
+        /**
+         * On utilise un listener pour charger une navigation selon les permissions
+         */
+        $rbacListener = $e->getApplication()->getServiceManager()->get('Application\Listener\AuthorizationListener');
+        $eventManager->getSharedManager()->attach(
+            'Zend\View\Helper\Navigation\AbstractHelper',
+            'isAllowed',
+            array($rbacListener, 'accept')
+        );
+
+        /**
+         * On utilise le gestionnaire d'evennement pour attacher au module d'enregistrement d'utilisateur le role user a chaque new user
+         */
+        $registerUserListener = $e->getApplication()->getServiceManager()->get('Application\Listener\RegisterUserListener');
+        $registerUserListener->attach($eventManager);
+        
     }
 
     public function getConfig()
