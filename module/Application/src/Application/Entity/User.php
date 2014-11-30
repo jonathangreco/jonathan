@@ -8,7 +8,6 @@ use ZfcRbac\Identity\IdentityInterface;
 // A partir d'une entité perso, on as besoin d'implémenter une interface ZfcUser
 use ZfcUser\Entity\UserInterface;
 use Rbac\Role\HierarchicalRoleInterface;
-
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

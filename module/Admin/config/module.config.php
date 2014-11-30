@@ -1,9 +1,7 @@
 <?php
 /**
- *
- * 
+ * Fichier de config du module admin 
  */
-
 return array(
     'router' => array(
         'routes' => array(

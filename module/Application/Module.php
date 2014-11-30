@@ -26,8 +26,6 @@ class Module
         $sessionContainer = new Container('locale');
         // teste si la langue en session existe
         if(!$sessionContainer->offsetExists('mylocale')){
-
-            // -------WARNING-------------- Un truc a revoir ici
             $sessionContainer->offsetSet('mylocale', 'fr_FR');
         }
         // mise en place du service de traduction

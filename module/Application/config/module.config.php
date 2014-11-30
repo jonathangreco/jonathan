@@ -21,10 +21,6 @@ return array(
                     ),
                 ),
             ),
-            // The following is a route to simplify getting started creating
-            // new controllers and actions without needing to create a new
-            // module. Simply drop new controllers in, and you can access them
-            // using the path /application/:controller/:action
             'application' => array(
                 'type'    => 'Literal',
                 'options' => array(
@@ -63,6 +59,16 @@ return array(
                     )
                 ),
             ),
+            'zfcuser' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/my-account',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\User',
+                        'action' => 'accountUser'
+                    )
+                )
+            )
         ),
     ),
     'service_manager' => array(
@@ -104,7 +110,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Translator' => 'Application\Controller\TranslatorController'
+            'Application\Controller\Translator' => 'Application\Controller\TranslatorController',
+            'Application\Controller\User' => 'Application\Controller\UserController'
         ),
         'factories' => array(
             'Application\Controller\Index' => 'Application\Factory\IndexControllerFactory',

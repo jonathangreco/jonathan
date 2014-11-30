@@ -1,0 +1,15 @@
+<div class="container col-xs-12">
+  <h1><?=$this->translate('My account')?></h1>
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div><?=$this->gravatar($this->zfcUserIdentity()->getEmail()) ?></div>
+      <div class="caption">
+      <h3><?=$this->zfcUserDisplayName()?></h3>
+      <p><?=$this->zfcUserIdentity()->getEmail()?></p>
+      <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
