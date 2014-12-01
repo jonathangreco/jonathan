@@ -20,12 +20,25 @@ return array(
                     ),
                 ),
                 'may_terminate' => true,
+                'child_routes' => array(
+                    'rights' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/rights',
+                            'defaults' => array(
+                                'controller' => 'Admin\Controller\Rights',
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
+                ),
             ),
         ),
     ),
     'service_manager' => array(
         'factories' => array(
             'Admin\Service\IndexService' => 'Admin\Factory\IndexServiceFactory',
+            'Admin\Service\RightsService' => 'Admin\Factory\RightsServiceFactory',
             'admin_navigation' => 'Admin\Navigation\Service\AdminNavigationFactory',
         ),
     ),
@@ -42,6 +55,7 @@ return array(
     'controllers' => array(
         'factories' => array(
             'Admin\Controller\Index' => 'Admin\Factory\IndexControllerFactory',
+            'Admin\Controller\Rights' => 'Admin\Factory\RightsControllerFactory',
         ),
     ),
     'view_manager' => array(
@@ -58,10 +72,14 @@ return array(
     ),
     'navigation' => array(
         'admin' => array(
-             'admin' => array(
-                 'label' => 'Admin',
-                 'route' => 'backend',
-             ),
+            'admin' => array(
+                'label' => 'Backend',
+                'route' => 'backend',
+            ),
+            'rights' => array(
+                'label' => 'Rights management',
+                'route' => 'backend/rights'
+            )
         ),
     ),
     'jonathan_admin' => array(

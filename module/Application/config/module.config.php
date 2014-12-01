@@ -59,16 +59,6 @@ return array(
                     )
                 ),
             ),
-            'zfcuser' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/my-account',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\User',
-                        'action' => 'accountUser'
-                    )
-                )
-            )
         ),
     ),
     'service_manager' => array(
@@ -87,7 +77,6 @@ return array(
             'translate' => 'Zend\I18n\Translator\TranslatorServiceFactory',
             'Application\Service\IndexService' => 'Application\Factory\IndexServiceFactory',
             'Application\Listener\AuthorizationListener' => 'Application\Factory\AuthorizationFactory',
-            'Application\Listener\RegisterUserListener' => 'Application\Factory\RegisterUserFactory',
         ),
         'invokables' => array(
             'FlashMessageListener' => 'Application\Listener\FlashMessageListener',
@@ -111,7 +100,6 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Translator' => 'Application\Controller\TranslatorController',
-            'Application\Controller\User' => 'Application\Controller\UserController'
         ),
         'factories' => array(
             'Application\Controller\Index' => 'Application\Factory\IndexControllerFactory',
@@ -145,11 +133,6 @@ return array(
             'home' => array(
                 'label' => 'Home',
                 'route' => 'home',
-            ),
-            'zfcuser' => array(
-                'label' => 'Account',
-                'route' => 'zfcuser',
-                'permission' => 'seeAccount',
             ),
             'backend' => array(
                 'label' => 'Backend',

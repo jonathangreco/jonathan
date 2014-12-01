@@ -47,13 +47,6 @@ class Module
             'isAllowed',
             array($rbacListener, 'accept')
         );
-
-        /**
-         * On utilise le gestionnaire d'evennement pour attacher au module d'enregistrement d'utilisateur le role user a chaque new user
-         */
-        $registerUserListener = $e->getApplication()->getServiceManager()->get('Application\Listener\RegisterUserListener');
-        $registerUserListener->attach($eventManager);
-        
     }
 
     public function getConfig()

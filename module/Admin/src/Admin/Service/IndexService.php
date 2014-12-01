@@ -10,8 +10,7 @@ class IndexService
 	{
 		$this->em = $em;
 	}
-
-
+    
 	public function getNews()
 	{
 		return $this->em->getRepository('Application\Entity\News')->findAll();

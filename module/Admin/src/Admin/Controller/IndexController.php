@@ -11,7 +11,8 @@ use Admin\Service\IndexService;
 
 class IndexController extends AbstractActionController
 {
-    public function __construct(IndexService $indexService) {
+    public function __construct(IndexService $indexService)
+    {
     	$this->indexService = $indexService;
     }
 

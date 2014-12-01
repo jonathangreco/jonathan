@@ -1,8 +1,8 @@
 <?php
 
-namespace Application\Factory;
+namespace User\Factory;
 
-use Application\Listener\RegisterUserListener;
+use User\Listener\RegisterUserListener;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 

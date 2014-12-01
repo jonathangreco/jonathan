@@ -52,4 +52,28 @@ class Permission implements PermissionInterface
     {
         return $this->name;
     }
+
+    /**
+     * Gets the value of name.
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Sets the value of name.
+     *
+     * @param string|null $name the name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
 }

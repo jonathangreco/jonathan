@@ -1,0 +1,26 @@
+<?php
+
+?>
+<div class="panel panel-default">
+    <div class="panel-heading"><?=$this->translate('Roles')?></div>
+    <div class="panel-body">
+        <p><?=$this->translate('You can manage role here')?></p>
+    </div>
+    <ul class="list-group">
+        <?php foreach ($this->rights as $right): ?>
+            <li class="list-group-item"><?=$right->getName()?></li>
+        <?php endforeach ?>
+    </ul>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading"><?=$this->translate('Permissions')?></div>
+    <div class="panel-body">
+        <p><?=$this->translate('You can manage permission here')?></p>
+    </div>
+    <ul class="list-group">
+        <?php foreach ($this->permissions as $permission): ?>
+            <li class="list-group-item"><?=$permission->getName()?></li>
+        <?php endforeach ?>
+    </ul>
+</div>
