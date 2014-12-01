@@ -11,6 +11,7 @@ return array(
      */
     //index
     'Roles' => 'Roles',
-    'You can manage role here' => 'Vous pouvez gérer les roles ici',
-    'You can manage permission here' => 'Vous pouvez gérer les permissions ici',
+    'Permissions' => 'Permissions',
+    'You can manage roles here' => 'Vous pouvez gérer les roles ici',
+    'You can manage permissions here' => 'Vous pouvez gérer les permissions ici',
 );

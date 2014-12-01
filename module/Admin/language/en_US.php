@@ -10,7 +10,8 @@ return array(
      * Controller Rights Management
      */
     //index
-    'Roles' => 'Roles',
-    'You can manage role here' => 'You can manage role here',
-    'You can manage permission here' => 'You can manage permission here',
+    'Roles' => 'Roles',    
+    'Permissions' => 'Permissions',
+    'You can manage roles here' => 'You can manage role here',
+    'You can manage permissions here' => 'You can manage permission here',
 );

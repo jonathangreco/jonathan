@@ -37,7 +37,15 @@
           <a class="navbar-brand" href="<?= $this->url('home')?>"><?= $this->translate('Back home')?></a>
         </div>
         <div class="collapse navbar-collapse">
-           <?php echo $this->navigation('admin_navigation')->menu()->setPartial('partial/menu_admin')->render();?>
+          <?php
+            $options = array(
+              'ulClass' => 'nav navbar-nav',
+              'minDepth' => '0',
+              'maxDepth' => '4',
+            );
+            echo $this->navigation('admin_navigation')->menu()->renderMenu('admin_navigation', $options);
+            echo $this->navigation('navigation/logged')->menu()->setPartial('partial/loggedNav');
+            ?>
         </div><!--/.nav-collapse -->
       </div>
     </nav>

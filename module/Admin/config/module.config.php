@@ -30,6 +30,39 @@ return array(
                                 'action' => 'index',
                             ),
                         ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'update' => array(
+                                'type' => 'Segment',
+                                'options' => array(
+                                    'route' => '/update[/:id][/:type]',
+                                    'defaults' => array(
+                                        'controller' => 'Admin\Controller\Rights',
+                                        'action' => 'update'
+                                    )
+                                )
+                            ),
+                            'delete' => array(
+                                'type' => 'Segment',
+                                'options' => array(
+                                    'route' => '/delete[/:id][/:type]',
+                                    'defaults' => array(
+                                        'controller' => 'Admin\Controller\Rights',
+                                        'action' => 'delete'
+                                    )
+                                )
+                            ),
+                            'add' => array(
+                                'type' => 'Segment',
+                                'options' => array(
+                                    'route' => '/add[/:type]',
+                                    'defaults' => array(
+                                        'controller' => 'Admin\Controller\Rights',
+                                        'action' => 'add'
+                                    )
+                                )
+                            )
+                        ),
                     ),
                 ),
             ),
@@ -78,7 +111,28 @@ return array(
             ),
             'rights' => array(
                 'label' => 'Rights management',
-                'route' => 'backend/rights'
+                'route' => 'backend/rights',
+                'controller' => 'Admin\Controller\Rights',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'route' => 'backend/rights/add',
+                        'controller' => 'Admin\Controller\Rights',
+                        'visible' => false,
+                    ),
+                    array(
+                        'label' => 'delete',
+                        'route' => 'backend/rights/delete',
+                        'controller' => 'Admin\Controller\Rights',
+                        'visible' => false,
+                    ),
+                    array(
+                        'label' => 'update',
+                        'route' => 'backend/rights/update',
+                        'controller' => 'Admin\Controller\Rights',
+                        'visible' => false,
+                    ),
+                ),
             )
         ),
     ),

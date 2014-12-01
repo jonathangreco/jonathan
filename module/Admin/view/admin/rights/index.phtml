@@ -1,26 +1,39 @@
 <?php
 
 ?>
+<?php foreach ($this->collection as $name => $type): ?>
 <div class="panel panel-default">
-    <div class="panel-heading"><?=$this->translate('Roles')?></div>
+    <div class="panel-heading"><?=$this->translate(ucfirst($name))?></div>
     <div class="panel-body">
-        <p><?=$this->translate('You can manage role here')?></p>
+        <p><?=$this->translate("You can manage {$name} here")?></p>
     </div>
-    <ul class="list-group">
-        <?php foreach ($this->rights as $right): ?>
-            <li class="list-group-item"><?=$right->getName()?></li>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th><?=$this->translate('ID')?></th>
+                <th><?=$this->translate('Name')?></th>
+                <th><?=$this->translate('Actions')?></th>
+            </tr>
+        </thead>
+        <?php foreach ($type as $value): ?>
+            <tr class="">
+                <td><?=$value->getId()?></td>
+                <td><?=$value->getName()?></td>
+                <td> 
+                    <a href="<?=$this->url('backend/rights/update', array('type' => $name, 'id' => $value->getId()))?>" class="btn btn-info">
+                        <?=$this->translate('Edit')?>
+                    </a>
+                    <a href="<?=$this->url('backend/rights/delete', array('type' => $name, 'id' => $value->getId()))?>" class="btn btn-danger">
+                        <?=$this->translate('Delete')?>
+                    </a>
+                </td>
+            </tr>
         <?php endforeach ?>
-    </ul>
-</div>
-
-<div class="panel panel-default">
-    <div class="panel-heading"><?=$this->translate('Permissions')?></div>
-    <div class="panel-body">
-        <p><?=$this->translate('You can manage permission here')?></p>
+    </table>
+    <div class="panel-footer">
+        <a href="<?=$this->url('backend/rights/add', array('type' => $name))?>" class="btn btn-success">
+            <?=$this->translate('Add')?>
+        </a>
     </div>
-    <ul class="list-group">
-        <?php foreach ($this->permissions as $permission): ?>
-            <li class="list-group-item"><?=$permission->getName()?></li>
-        <?php endforeach ?>
-    </ul>
 </div>
+<?php endforeach ?>

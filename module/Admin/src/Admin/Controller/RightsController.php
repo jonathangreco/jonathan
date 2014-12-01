@@ -16,16 +16,46 @@ class RightsController extends AbstractActionController
         $this->rights = $rights;
     }
 
+    /**
+     * Notre page CRUD du module
+     */
     public function indexAction()
     {
         $view = new ViewModel();
-        $view->setVariable('rights', $this->rights->getRoles());
-        $view->setVariable('permissions', $this->rights->getPermissions());
+        $view->setVariable(
+            'collection',
+            array(
+                'roles' => $this->rights->getRoles(),
+                'permissions' => $this->rights->getPermissions()
+            )
+        );
         return $view;
     }
 
+    /**
+     * Notre action d'update
+     */
     public function updateAction()
     {
+        $type = $this->params('type');
+        $id = $this->params('id');
+        var_dump($type, $id);
+        //$this->user->update();
+    }
 
-    } 
+    /**
+     * Notre action d'ajout
+     */
+    public function addAction()
+    {
+
+    }
+
+    /**
+     * Notre action de Supression
+     */
+    public function deleteAction()
+    {
+
+    }
 }

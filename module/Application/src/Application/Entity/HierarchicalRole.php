@@ -136,4 +136,28 @@ class HierarchicalRole implements HierarchicalRoleInterface
         return $this->name;
     }
 
+
+    /**
+     * Gets the value of id.
+     *
+     * @return int|null
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Sets the value of id.
+     *
+     * @param int|null $id the id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 }
