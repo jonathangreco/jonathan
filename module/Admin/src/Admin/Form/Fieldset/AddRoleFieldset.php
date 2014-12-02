@@ -14,6 +14,6 @@ class AddRoleFieldset extends Fieldset
 {
 	public function init()
 	{
-
+ 
 	}
 }
