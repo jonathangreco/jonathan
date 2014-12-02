@@ -1,4 +1,7 @@
 <?php
+/**
+ * @author Jonathan Greco <nataniel.greco@gmail.com>
+ */
 namespace Application\Navigation;
 
 use Zend\Navigation\Service\DefaultNavigationFactory;

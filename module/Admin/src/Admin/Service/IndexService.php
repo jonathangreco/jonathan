@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * @author Jonathan Greco <nataniel.greco@gmail.com>
+ */
 namespace Admin\Service;
 
 use Doctrine\Common\Persistence\ObjectManager;

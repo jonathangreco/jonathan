@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * @author Jonathan Greco <nataniel.greco@gmail.com>
+ */
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;

@@ -1,7 +1,7 @@
 <?php
 /**
  * Classe permettant de gérer les roles par utilisateur, ainsi que leurs groupes.
- * 
+ * @author Jonathan Greco <nataniel.greco@gmail.com>
  */
 namespace Application\Entity;
 

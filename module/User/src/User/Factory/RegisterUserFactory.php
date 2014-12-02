@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * @author Jonathan Greco <nataniel.greco@gmail.com>
+ */
 namespace User\Factory;
 
 use User\Listener\RegisterUserListener;

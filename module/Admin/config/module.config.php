@@ -1,6 +1,7 @@
 <?php
 /**
  * Fichier de config du module admin 
+ * @author Jonathan Greco <nataniel.greco@gmail.com>
  */
 return array(
     'router' => array(
@@ -67,6 +68,9 @@ return array(
                 ),
             ),
         ),
+    ),
+    'form_elements' => array(
+        'factories'
     ),
     'service_manager' => array(
         'factories' => array(

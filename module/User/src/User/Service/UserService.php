@@ -2,8 +2,7 @@
 /**
  * 
  * @package User
- * @author Jonathan Greco <jgreco@docsourcing.com>
- * @author Bastien Hérault <bherault@docsourcing.com>  
+ * @author Jonathan Greco <nataniel.greco@gmail.com>
  */
  
 namespace User\Service;

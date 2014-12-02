@@ -1,6 +1,7 @@
 <?php
 /**
  * Controlleur admin gérant une interface de connexion
+ * @author Jonathan Greco <nataniel.greco@gmail.com>
  */
 
 namespace Admin\Controller;

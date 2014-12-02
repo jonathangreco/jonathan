@@ -2,7 +2,7 @@
 /**
 * Factory permettant d'injecter une instance de indexService dans le controller
 * 
-* @author Jonathan Greco <jgreco@docsourcing.com>
+* @author Jonathan Greco <nataniel.greco@gmail.com>
 */
 namespace Application\Factory;
 

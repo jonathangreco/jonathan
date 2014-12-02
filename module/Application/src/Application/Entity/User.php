@@ -1,6 +1,7 @@
 <?php
 /**
  * Entité utilisateur, pour l'instant un soucis : ZfcUser mapp aussi son entité en même temps que celle ci...
+ * @author Jonathan Greco <nataniel.greco@gmail.com>
  */
 namespace Application\Entity;
 

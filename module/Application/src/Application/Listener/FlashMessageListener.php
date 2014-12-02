@@ -3,6 +3,7 @@
 * Ce Listener permet de construire un tableau de FlashMessage selon les namespaces.
 * Danger | Info | Warning | Success
 * Il est appelé après chaque chargement de page tant qu'il y a des Flash Message à afficher
+* @author Jonathan Greco <nataniel.greco@gmail.com>
 */
 namespace Application\Listener;
 

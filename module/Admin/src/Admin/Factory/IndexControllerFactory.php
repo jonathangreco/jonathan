@@ -1,8 +1,7 @@
 <?php
 /**
-* Factory permettant d'injecter une instance de indexService dans le controller
-* 
-* @author Jonathan Greco <jgreco@docsourcing.com>
+* Factory permettant d'injecter une instance de indexService dans le controller 
+* @author Jonathan Greco <nataniel.greco@gmail.com>
 */
 namespace Admin\Factory;
 

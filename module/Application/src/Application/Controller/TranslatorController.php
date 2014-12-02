@@ -1,7 +1,6 @@
 <?php
 /**
- *
- * @author Remi THOMAS
+ * @author Jonathan Greco <nataniel.greco@gmail.com>
  */
  
 namespace Application\Controller;

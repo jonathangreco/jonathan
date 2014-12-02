@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * @author Jonathan Greco <nataniel.greco@gmail.com>
+ */
 namespace User\Listener;
 
 use Zend\EventManager\AbstractListenerAggregate;

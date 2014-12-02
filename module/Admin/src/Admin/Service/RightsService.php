@@ -2,6 +2,7 @@
 /**
  * Couche service de nos droits pour l'application
  * Gestion d'un CRUD complet pour role, permission et user..
+ * @author Jonathan Greco <nataniel.greco@gmail.com>
  */
 namespace Admin\Service;
 
