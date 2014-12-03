@@ -1,1 +1,30 @@
-add.phtml
+<?php
+  $form->setAttribute('action', $this->url('backend/rights/add'));
+  $form->setAttribute('method', 'POST');
+  $role = $form->get('roleFieldset')->get('name');
+  $form->prepare();
+?>
+<?= $this->form()->openTag($form) ?>
+<div class="container">
+  <h1><?=$this->escapeHtml($this->translate('Add role'))?></h1>
+  <div class="col-xs-5">
+    <div class="form-group <?php if ($this->formElementErrors($role)) echo "has-error" ?>">
+      <label class="control-label"><?php echo $this->formLabel($role) ?></label>
+      <?php
+      $role->setAttribute('class', 'form-control')->setAttribute('placeholder', 'Name');
+      echo $this->formElement($role);
+      if ($this->formElementErrors($role)) : ?>
+      <?php
+      echo $this->formElementErrors()
+        ->setMessageOpenFormat('<p class="help-block">')
+        ->setMessageSeparatorString('</p><p class="help-block">')
+        ->setMessageCloseString('</p>')
+        ->render($role);
+      ?>
+      <?php endif; ?>
+    </div>
+  <?= $this->formHidden($this->form->get('add_role_csrf')) ?>
+  <?= $this->formSubmit($form->get('submitAdd')->setAttribute('class', 'btn btn-success'))?>
+  <?= $this->form()->closeTag()?>
+  </div>
+</div>

@@ -34,7 +34,7 @@ class AddRoleForm extends Form
          */
         $this->add(
             array(
-                'name'    => 'addRole',
+                'name'    => 'roleFieldset',
                 'type'    => 'Admin\Form\Fieldset\AddRoleFieldset',
                 'options' => array(
                     'use_as_base_fieldset' => true,
@@ -47,11 +47,10 @@ class AddRoleForm extends Form
          */
         $this->setValidationGroup(
             array(
-                'addRole' => array(
-                    'regroupMode',
-                    'groupBySelect',
+                'roleFieldset' => array(
+                    'name'
                 ),
-                'add_config_csrf'
+                'add_role_csrf'
             )
         );
 

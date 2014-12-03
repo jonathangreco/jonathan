@@ -45,32 +45,32 @@ class RightsController extends AbstractActionController
     }
 
     /**
-     * Notre action d'ajout
+     * Notre action d'ajout ne marche que pour l'ajout de role présentement...
      */
     public function addAction()
     {
+        $view = new ViewModel();
         /**
          * Le mieux serait de faire l'appel au formulaire dans la couche service ou via un trait
          * Plus propre
          */
-        $this->getServiceLocator()->get('formElementManager')->get('Admin\Form\AddRole');
+        $form = $this->getServiceLocator()->get('formElementManager')->get('Admin\Form\AddRole');
         $request = $this->getRequest();
 
-        /**
-         * Prototype a faire marcher, non fonctionnel
-         */
         if ($request->isPost()) {
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
-                $this->flashMessenger()->setNamespace('info')->addMessage('You have a new config ! Congratulations');
-                return $this->redirect()->toRoute('rights');
+                $this->flashMessenger()->setNamespace('success')->addMessage('Your role has been registered');
+                $role = $form->getData();
+                $this->rights->addRole($role);
+                return $this->redirect()->toRoute('backend/rights');
             }
             $this->flashMessenger()->setNamespace('danger')
                  ->addMessage('An error occured please check informations below fields form more informations.');
         }
         $view->setVariable('form', $form);
-
+        return $view;
     }
 
     /**
@@ -78,6 +78,12 @@ class RightsController extends AbstractActionController
      */
     public function deleteAction()
     {
-
+        $id = (int)$this->params()->fromRoute('id', 0);
+        $role = $this->rights->getRole($id);
+        if ($role) {
+            $this->rights->deleteRole($role);
+            $this->flashMessenger()->setNamespace('success')->addMessage('Your role has been deleted');
+        }
+        return $this->redirect()->toRoute('backend/rights');
     }
 }

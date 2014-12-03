@@ -11,6 +11,7 @@ use Zend\Loader;
 use Zend\EventManager\EventInterface;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\RouteMatch;
+use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 
 class Module implements 
     Feature\AutoloaderProviderInterface,
@@ -73,5 +74,24 @@ class Module implements
     public function getServiceConfig()
     {
         return array();
+    }
+
+    /**
+     * Permet d'injecter à l'interface ObjectManagerAwareInterface, l'entityManager pour les formulaires
+     */
+    public function getFormElementConfig()
+    {
+        return array(
+            'initializers' => array(
+                'ObjectManagerInitializer' => function ($element, $formElements) {
+                    if ($element instanceof ObjectManagerAwareInterface) {
+                        $services      = $formElements->getServiceLocator();
+                        $entityManager = $services->get('Doctrine\ORM\EntityManager');
+
+                        $element->setObjectManager($entityManager);
+                    }
+                },
+            ),
+        );
     }
 }
