@@ -1,6 +1,4 @@
-<?php
 
-?>
 <?php foreach ($this->collection as $name => $type): ?>
 <div class="panel panel-default">
     <div class="panel-heading"><?=$this->translate(ucfirst($name))?></div>
@@ -12,13 +10,30 @@
             <tr>
                 <th><?=$this->translate('ID')?></th>
                 <th><?=$this->translate('Name')?></th>
+                <?php if ($name == 'roles'): ?>
+                    <th><?=$this->translate('Children') ?></th>
+                <?php endif ?>
                 <th><?=$this->translate('Actions')?></th>
             </tr>
         </thead>
         <?php foreach ($type as $value): ?>
+        <?php
+            if ($name == 'roles') {
+                $children = $value->getChildren();
+            } else {
+                $children = false;
+            }
+        ?>
             <tr class="">
                 <td><?=$value->getId()?></td>
                 <td><?=$value->getName()?></td>
+                <?php if ($children || $name == 'roles'): ?>
+                    <td>
+                    <?php foreach ($children as $child): ?>
+                        <?=$child->getName() . ', '?>
+                    <?php endforeach ?>
+                    </td>
+                <?php endif ?>
                 <td> 
                     <a href="<?=$this->url('backend/rights/update', array('type' => $name, 'id' => $value->getId()))?>" class="btn btn-info">
                         <?=$this->translate('Edit')?>
