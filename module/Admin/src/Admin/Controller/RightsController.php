@@ -49,6 +49,27 @@ class RightsController extends AbstractActionController
      */
     public function addAction()
     {
+        /**
+         * Le mieux serait de faire l'appel au formulaire dans la couche service ou via un trait
+         * Plus propre
+         */
+        $this->getServiceLocator()->get('formElementManager')->get('Admin\Form\AddRole');
+        $request = $this->getRequest();
+
+        /**
+         * Prototype a faire marcher, non fonctionnel
+         */
+        if ($request->isPost()) {
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+                $this->flashMessenger()->setNamespace('info')->addMessage('You have a new config ! Congratulations');
+                return $this->redirect()->toRoute('rights');
+            }
+            $this->flashMessenger()->setNamespace('danger')
+                 ->addMessage('An error occured please check informations below fields form more informations.');
+        }
+        $view->setVariable('form', $form);
 
     }
 

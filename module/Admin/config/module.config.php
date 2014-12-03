@@ -69,8 +69,10 @@ return array(
             ),
         ),
     ),
-    'form_elements' => array(
-        'factories'
+    'form_elements'   => array(
+        'invokables' => array(
+            'Admin\Form\AddRole'    => 'Admin\Form\AddRoleForm',
+        ),
     ),
     'service_manager' => array(
         'factories' => array(
