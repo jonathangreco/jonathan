@@ -64,11 +64,38 @@ class HierarchicalRole implements HierarchicalRoleInterface
         $this->children[] = $child;
     }
 
+    /**
+     * On ajoute plusieurs role à un role créée
+     * @param ArrayCollection $children
+     */
+    public function addChildren(ArrayCollection $children)
+    {
+        foreach ($children as $child) {
+            $this->addChild($child);
+        }
+    }
+
+
+    /**
+     * Cette méthode viens avec l'hydrateur doctrine, en gros on check les différence avec les ajout et on opère les suppressions des
+     * enfants qui ont été supprimés
+     *
+     * Problème : ça marche pas vraiment correctement
+     * 
+     * @param  ArrayCollection $children
+     */
+    public function removeChildren(ArrayCollection $children)
+    {
+        foreach ($children as $child) {
+            $this->children->clear();
+        }
+    }
+
     /*
      * Set the list of permission
      * @param Collection $permissions
      */
-    public function setPermissions(Collection $permissions)
+    public function setPermissions(ArrayCollection $permissions)
     {
         $this->permissions->clear();
         foreach ($permissions as $permission) {
@@ -77,6 +104,16 @@ class HierarchicalRole implements HierarchicalRoleInterface
     }
 
     /**
+     * Cette méthode retourne toutes les permissions d'un role
+     * @return Collection Permissions
+     */
+    public function getPermissions()
+    {
+        return $this->permissions;
+    }
+
+    /**
+     * Cette méthode attache une permission, à un role.
      * {@inheritDoc}
      */
     public function addPermission($permission)
@@ -157,7 +194,6 @@ class HierarchicalRole implements HierarchicalRoleInterface
     public function setId($id)
     {
         $this->id = $id;
-
         return $this;
     }
 }

@@ -23,13 +23,7 @@ class RightsController extends AbstractActionController
     public function indexAction()
     {
         $view = new ViewModel();
-        $view->setVariable(
-            'collection',
-            array(
-                'roles' => $this->rights->getRoles(),
-                'permissions' => $this->rights->getPermissions()
-            )
-        );
+        $view->setVariable('roles', $this->rights->getRoles());
         return $view;
     }
 
@@ -38,10 +32,27 @@ class RightsController extends AbstractActionController
      */
     public function updateAction()
     {
-        $type = $this->params('type');
+        $request = $this->getRequest();
+        $form = $this->getServiceLocator()->get('formElementManager')->get('Admin\Form\UpdateRole');
+        $view = new ViewModel();
         $id = $this->params('id');
-        var_dump($type, $id);
-        //$this->user->update();
+        $role = $this->rights->getRole($id);
+        $form->bind($role);
+
+        if ($request->isPost()) {
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                $this->flashMessenger()->setNamespace('success')->addMessage('Your role has been updated');
+                $role = $form->getData();
+                $this->rights->updateRole($role);
+                return $this->redirect()->toRoute('backend/rights');
+            }
+            $this->flashMessenger()->setNamespace('danger')
+                 ->addMessage('An error occured please check informations below fields form more informations.');
+        }
+        $view->setVariable('form', $form);
+        $view->setVariable('id', $id);
+        return $view;
     }
 
     /**

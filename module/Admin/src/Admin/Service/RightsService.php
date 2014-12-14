@@ -42,6 +42,16 @@ class RightsService
         return $this->em->getRepository('Application\Entity\Permission')->findAll();
     }
 
+    /**
+     * On met a jour le role, on peut lui ajouter des permissions ou le rendre enfant d'un autre role
+     * @param HierarchicalRole $role
+     */
+    public function updateRole(HierarchicalRole $role)
+    {
+        $this->em->persist($role);
+        $this->em->flush($role);
+    }
+
     public function addRole(HierarchicalRole $role)
     {
         $this->em->persist($role);

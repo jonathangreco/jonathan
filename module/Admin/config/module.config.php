@@ -36,7 +36,7 @@ return array(
                             'update' => array(
                                 'type' => 'Segment',
                                 'options' => array(
-                                    'route' => '/update[/:id][/:type]',
+                                    'route' => '/update[/:id]',
                                     'defaults' => array(
                                         'controller' => 'Admin\Controller\Rights',
                                         'action' => 'update'
@@ -46,7 +46,7 @@ return array(
                             'delete' => array(
                                 'type' => 'Segment',
                                 'options' => array(
-                                    'route' => '/delete[/:id][/:type]',
+                                    'route' => '/delete[/:id]',
                                     'defaults' => array(
                                         'controller' => 'Admin\Controller\Rights',
                                         'action' => 'delete'
@@ -56,7 +56,7 @@ return array(
                             'add' => array(
                                 'type' => 'Segment',
                                 'options' => array(
-                                    'route' => '/add[/:type]',
+                                    'route' => '/add',
                                     'defaults' => array(
                                         'controller' => 'Admin\Controller\Rights',
                                         'action' => 'add'
@@ -71,7 +71,8 @@ return array(
     ),
     'form_elements'   => array(
         'invokables' => array(
-            'Admin\Form\AddRole'    => 'Admin\Form\AddRoleForm',
+            'Admin\Form\AddRole'        => 'Admin\Form\AddRoleForm',
+            'Admin\Form\UpdateRole'     => 'Admin\Form\UpdateRoleForm',
         ),
     ),
     'service_manager' => array(

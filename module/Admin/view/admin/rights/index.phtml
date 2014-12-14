@@ -1,44 +1,41 @@
-
-<?php foreach ($this->collection as $name => $type): ?>
 <div class="panel panel-default">
-    <div class="panel-heading"><?=$this->translate(ucfirst($name))?></div>
+    <div class="panel-heading"><?=$this->translate('Roles')?></div>
     <div class="panel-body">
-        <p><?=$this->translate("You can manage {$name} here")?></p>
+        <p><?=$this->translate("You can manage roles here")?></p>
     </div>
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th><?=$this->translate('ID')?></th>
                 <th><?=$this->translate('Name')?></th>
-                <?php if ($name == 'roles'): ?>
-                    <th><?=$this->translate('Children') ?></th>
-                <?php endif ?>
+                <th><?=$this->translate('Children') ?></th>
+                <th><?=$this->translate('Permissions') ?></th>
                 <th><?=$this->translate('Actions')?></th>
             </tr>
         </thead>
-        <?php foreach ($type as $value): ?>
-        <?php
-            if ($name == 'roles') {
-                $children = $value->getChildren();
-            } else {
-                $children = false;
-            }
-        ?>
+        <?php foreach ($this->roles as $role): ?>
+        <?php $children = $role->getChildren();?>
             <tr class="">
-                <td><?=$value->getId()?></td>
-                <td><?=$value->getName()?></td>
-                <?php if ($children || $name == 'roles'): ?>
-                    <td>
-                    <?php foreach ($children as $child): ?>
-                        <?=$child->getName() . ', '?>
+                <td><?=$role->getId()?></td>
+                <td><?=$role->getName()?></td>
+                
+                <td>
+                <?php foreach ($children as $child): ?>
+                    <?=$child->getName() . ', '?>
+                <?php endforeach ?>
+                </td>
+                <td>
+                <?php foreach ($children as $child): ?>
+                    <?php foreach ($child->getPermissions() as $permission): ?>
+                        <?=$permission->getName(). ', '?>                            
                     <?php endforeach ?>
-                    </td>
-                <?php endif ?>
+                <?php endforeach ?>
+                </td>
                 <td> 
-                    <a href="<?=$this->url('backend/rights/update', array('type' => $name, 'id' => $value->getId()))?>" class="btn btn-info">
+                    <a href="<?=$this->url('backend/rights/update', array('id' => $role->getId()))?>" class="btn btn-info">
                         <?=$this->translate('Edit')?>
                     </a>
-                    <a href="<?=$this->url('backend/rights/delete', array('type' => $name, 'id' => $value->getId()))?>" class="btn btn-danger">
+                    <a href="<?=$this->url('backend/rights/delete', array('id' => $role->getId()))?>" class="btn btn-danger">
                         <?=$this->translate('Delete')?>
                     </a>
                 </td>
@@ -46,9 +43,8 @@
         <?php endforeach ?>
     </table>
     <div class="panel-footer">
-        <a href="<?=$this->url('backend/rights/add', array('type' => $name))?>" class="btn btn-success">
+        <a href="<?=$this->url('backend/rights/add')?>" class="btn btn-success">
             <?=$this->translate('Add')?>
         </a>
     </div>
 </div>
-<?php endforeach ?>
