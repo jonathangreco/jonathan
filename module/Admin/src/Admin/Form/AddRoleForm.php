@@ -48,7 +48,10 @@ class AddRoleForm extends Form
         $this->setValidationGroup(
             array(
                 'roleFieldset' => array(
-                    'name'
+                    'name',
+                    'children',
+                    'id',
+                    'permissions'
                 ),
                 'add_role_csrf'
             )

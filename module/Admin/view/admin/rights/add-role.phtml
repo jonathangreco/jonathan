@@ -1,0 +1,42 @@
+<?php
+  $form->setAttribute('action', $this->url('backend/rights/addRole'));
+  $form->setAttribute('method', 'POST');
+  $elements = $form->get('roleFieldset');
+  $form->prepare();
+?>
+<?= $this->form()->openTag($form) ?>
+<div class="container">
+  <h1><?=$this->escapeHtml($this->translate('Add role'))?></h1>
+  <div class="col-xs-5">
+    <?php foreach ($elements as $elementName => $element): ?>
+      <?php if ($element->getAttribute('type') !== 'hidden'): ?>
+        <div class="form-group <?php if ($this->formElementErrors($element)) echo "has-error" ?>">
+        <label class="control-label"><?php echo $this->formLabel($element) ?></label>
+        <?php
+        $element->setAttribute('placeholder', 'Name');
+        echo $this->formElement($element);
+        if ($this->formElementErrors($element)) : ?>
+          <?php
+          echo $this->formElementErrors()
+            ->setMessageOpenFormat('<p class="help-block">')
+            ->setMessageSeparatorString('</p><p class="help-block">')
+            ->setMessageCloseString('</p>')
+            ->render($element);
+          ?>
+        <?php endif; ?>
+        </div>
+      <?php else: ?>
+        <?=$this->formHidden($element)?>
+      <?php endif ?>    
+    <?php endforeach ?>
+    
+    <?= $this->formHidden($this->form->get('add_role_csrf')) ?>
+    <?= $this->formSubmit($form->get('submitAdd')->setAttribute('class', 'btn btn-success'))?>
+    <?= $this->form()->closeTag()?>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('.select2').select2();
+</script>
+</div>

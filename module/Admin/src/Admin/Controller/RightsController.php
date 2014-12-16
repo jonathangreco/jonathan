@@ -30,7 +30,7 @@ class RightsController extends AbstractActionController
     /**
      * Notre action d'update
      */
-    public function updateAction()
+    public function updateRoleAction()
     {
         $request = $this->getRequest();
         $form = $this->getServiceLocator()->get('formElementManager')->get('Admin\Form\UpdateRole');
@@ -58,7 +58,7 @@ class RightsController extends AbstractActionController
     /**
      * Notre action d'ajout ne marche que pour l'ajout de role présentement...
      */
-    public function addAction()
+    public function addRoleAction()
     {
         $view = new ViewModel();
         /**
@@ -87,7 +87,7 @@ class RightsController extends AbstractActionController
     /**
      * Notre action de Supression
      */
-    public function deleteAction()
+    public function deleteRoleAction()
     {
         $id = (int)$this->params()->fromRoute('id', 0);
         $role = $this->rights->getRole($id);

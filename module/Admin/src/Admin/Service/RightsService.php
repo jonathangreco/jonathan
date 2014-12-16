@@ -8,6 +8,7 @@ namespace Admin\Service;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Application\Entity\HierarchicalRole;
+use Application\Entity\Permission;
 
 class RightsService
 {
@@ -32,6 +33,16 @@ class RightsService
     public function getRole($id)
     {
         return $this->em->getRepository('Application\Entity\HierarchicalRole')->find($id);
+    }
+
+    /**
+     * On récupère une permission précise
+     * @param  integer $id
+     * @return Permission instance
+     */
+    public function getPermission($id)
+    {
+        return $this->em->getRepository('Application\Entity\Permission')->find($id);
     }
 
     /**

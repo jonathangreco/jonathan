@@ -1,3 +1,4 @@
+<!-- Roles -->
 <div class="panel panel-default">
     <div class="panel-heading"><?=$this->translate('Roles')?></div>
     <div class="panel-body">
@@ -32,10 +33,10 @@
                 <?php endforeach ?>
                 </td>
                 <td> 
-                    <a href="<?=$this->url('backend/rights/update', array('id' => $role->getId()))?>" class="btn btn-info">
+                    <a href="<?=$this->url('backend/rights/updateRole', array('id' => $role->getId()))?>" class="btn btn-info">
                         <?=$this->translate('Edit')?>
                     </a>
-                    <a href="<?=$this->url('backend/rights/delete', array('id' => $role->getId()))?>" class="btn btn-danger">
+                    <a href="<?=$this->url('backend/rights/deleteRole', array('id' => $role->getId()))?>" class="btn btn-danger">
                         <?=$this->translate('Delete')?>
                     </a>
                 </td>
@@ -43,7 +44,7 @@
         <?php endforeach ?>
     </table>
     <div class="panel-footer">
-        <a href="<?=$this->url('backend/rights/add')?>" class="btn btn-success">
+        <a href="<?=$this->url('backend/rights/addRole')?>" class="btn btn-success">
             <?=$this->translate('Add')?>
         </a>
     </div>

@@ -35,7 +35,7 @@ class UpdateRoleForm extends Form
         $this->add(
             array(
                 'name'    => 'updateRole',
-                'type'    => 'Admin\Form\Fieldset\UpdateRoleFieldset',
+                'type'    => 'Admin\Form\Fieldset\AddRoleFieldset',
                 'options' => array(
                     'use_as_base_fieldset' => true,
                 )
@@ -49,7 +49,9 @@ class UpdateRoleForm extends Form
             array(
                 'updateRole' => array(
                     'name',
-                    'children'
+                    'children',
+                    'id',
+                    'permissions'
                 ),
                 'update_role_csrf'
             )

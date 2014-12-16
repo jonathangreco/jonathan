@@ -23,13 +23,64 @@ class AddRoleFieldset extends Fieldset implements
         $this->setHydrator(new DoctrineHydrator($this->getObjectManager(), 'Application\Entity\HierarchicalRole'))
             ->setObject(new HierarchicalRole());
 
+         $this->add(
+             array(
+                'name' => 'id',
+                'type' => 'hidden',
+            )
+        );
+
         $this->add(
             array(
                 'name' => 'name',
                 'type' => 'Zend\Form\Element\Text',
                 'options' => array(
                     'label' => 'Role\'s name',
-                    'comments' => 'How this customer want to regroup his invoices ?'
+                    'comments' => 'Role name'
+                ),
+                'attributes' => array(
+                    'class' => 'form-control',
+                ),
+            )
+        );
+        
+        $this->add(
+            array(
+                'name' => 'children',
+                'type' => 'DoctrineModule\Form\Element\ObjectSelect',
+                'options' => array(
+                    'object_manager' => $this->getObjectManager(),
+                    'label' => 'Children',
+                    'target_class' => 'Application\Entity\HierarchicalRole',
+                    'property' => 'name',
+                    'is_method'      => true,
+                    'find_method'    => array(
+                        'name'   => 'findAllExeptOne',
+                        'params' => array(
+                            'criteria' => array('roleId' => $this->get('id')->getValue()),
+                        ),
+                    )
+                ),
+                'attributes' => array(
+                    'multiple' => true,
+                    'class' => 'select2 form-control',
+                ),
+            )
+        );
+
+        $this->add(
+            array(
+                'name' => 'permissions',
+                'type' => 'DoctrineModule\Form\Element\ObjectSelect',
+                'options' => array(
+                    'object_manager' => $this->getObjectManager(),
+                    'label' => 'Permissions',
+                    'target_class' => 'Application\Entity\Permission',
+                    'property' => 'name',
+                ),
+                'attributes' => array(
+                    'multiple' => true,
+                    'class' => 'select2 form-control',
                 ),
             )
         );
@@ -42,7 +93,21 @@ class AddRoleFieldset extends Fieldset implements
     public function getInputFilterSpecification()
     {
         return array(
-            'role'  => array(
+            'name'  => array(
+                'required'   => true,
+                'filters'    => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+            ),
+            'children'  => array(
+                'required'   => true,
+                'filters'    => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+            ),
+            'permissions'  => array(
                 'required'   => true,
                 'filters'    => array(
                     array('name' => 'StripTags'),

@@ -75,6 +75,10 @@ class HierarchicalRole implements HierarchicalRoleInterface
         }
     }
 
+    public function removeChild(HierarchicalRole $child)
+    {
+        $this->children->removeElement($child);
+    }
 
     /**
      * Cette méthode viens avec l'hydrateur doctrine, en gros on check les différence avec les ajout et on opère les suppressions des
@@ -87,7 +91,7 @@ class HierarchicalRole implements HierarchicalRoleInterface
     public function removeChildren(ArrayCollection $children)
     {
         foreach ($children as $child) {
-            $this->children->clear();
+            $this->removeChild($child);
         }
     }
 
@@ -123,6 +127,37 @@ class HierarchicalRole implements HierarchicalRoleInterface
         }
 
         $this->permissions[(string) $permission] = $permission;
+    }
+
+    /**
+     * Supprime une permission
+     * @param  Permission $permission
+     */
+    public function removePermission($permission)
+    {
+        $this->permissions->removeElement($permission);
+    }
+
+    /**
+     * Permet de supprimer les permissions
+     * @param  ArrayCollection $permissions
+     */
+    public function removePermissions(ArrayCollection $permissions)
+    {
+        foreach ($permissions as $permission) {
+            $this->removePermission($permission);
+        }
+    }
+
+    /**
+     * Ajoute des permissions a un role
+     * @param ArrayCollection $permissions
+     */
+    public function addPermissions(ArrayCollection $permissions)
+    {
+        foreach ($permissions as $permission) {
+            $this->addPermission($permission);
+        }
     }
 
     /**

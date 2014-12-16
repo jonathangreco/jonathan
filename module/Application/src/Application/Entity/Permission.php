@@ -32,7 +32,7 @@ class Permission implements PermissionInterface
     /**
      * Constructor
      */
-    public function __construct($name)
+    public function __construct($name = null)
     {
         $this->name  = (string) $name;
     }

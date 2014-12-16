@@ -33,36 +33,36 @@ return array(
                         ),
                         'may_terminate' => true,
                         'child_routes' => array(
-                            'update' => array(
+                            'updateRole' => array(
                                 'type' => 'Segment',
                                 'options' => array(
-                                    'route' => '/update[/:id]',
+                                    'route' => '/update-role[/:id]',
                                     'defaults' => array(
                                         'controller' => 'Admin\Controller\Rights',
-                                        'action' => 'update'
+                                        'action' => 'updateRole'
                                     )
                                 )
                             ),
-                            'delete' => array(
+                            'deleteRole' => array(
                                 'type' => 'Segment',
                                 'options' => array(
-                                    'route' => '/delete[/:id]',
+                                    'route' => '/delete-role[/:id]',
                                     'defaults' => array(
                                         'controller' => 'Admin\Controller\Rights',
-                                        'action' => 'delete'
+                                        'action' => 'deleteRole'
                                     )
                                 )
                             ),
-                            'add' => array(
+                            'addRole' => array(
                                 'type' => 'Segment',
                                 'options' => array(
-                                    'route' => '/add',
+                                    'route' => '/add-role',
                                     'defaults' => array(
                                         'controller' => 'Admin\Controller\Rights',
-                                        'action' => 'add'
+                                        'action' => 'addRole'
                                     )
                                 )
-                            )
+                            ),
                         ),
                     ),
                 ),
