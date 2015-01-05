@@ -16,6 +16,8 @@ Et 2 permissisons
 -   seeAccount
 -   admin
 
+Pour cela, vous avez un fichier dataSQL.sql dans le dossier ./data n'hésiter pas a vous en servir pour ajouter tous vos roles et permissions.
+
 Bien penser également à modifier le nom de la base de donnée selon vos choix personnels..
 
 
