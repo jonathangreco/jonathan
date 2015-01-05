@@ -17,7 +17,7 @@ class UserControllerFactory implements FactoryInterface
         $parentLocator = $serviceLocator->getServiceLocator();
 
         /** @var UserService $UserService */
-        $UserService = $parentLocator->get('User\Service\User');
-        return new UserController($UserService);
+        $userService = $parentLocator->get('User\Service\User');
+        return new UserController($userService);
     }
 }

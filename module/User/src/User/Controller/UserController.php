@@ -17,11 +17,11 @@ class UserController extends AbstractActionController
     /**
      * @var User\Service\UserService
      */ 
-    private $User;
+    private $user;
 
-    public function __construct(UserService $UserService)
+    public function __construct(UserService $userService)
     {
-        $this->User = $UserService;
+        $this->user = $userService;
     }
 
     public function accountUserAction()
