@@ -123,19 +123,19 @@ return array(
                 'pages' => array(
                     array(
                         'label' => 'Add',
-                        'route' => 'backend/rights/add',
+                        'route' => 'backend/rights/addRole',
                         'controller' => 'Admin\Controller\Rights',
                         'visible' => false,
                     ),
                     array(
                         'label' => 'delete',
-                        'route' => 'backend/rights/delete',
+                        'route' => 'backend/rights/deleteRole',
                         'controller' => 'Admin\Controller\Rights',
                         'visible' => false,
                     ),
                     array(
                         'label' => 'update',
-                        'route' => 'backend/rights/update',
+                        'route' => 'backend/rights/updateRole',
                         'controller' => 'Admin\Controller\Rights',
                         'visible' => false,
                     ),
