@@ -8,13 +8,13 @@ return array(
         'routes' => array(
             'zfcadmin' => array(
                 'options' => array(
-                    'route'    => '/backend',
+                    'route'    => '/backoffice',
                  ),
             ),
-            'backend' => array(
+            'backoffice' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'       => '/backend',
+                    'route'       => '/backoffice',
                     'defaults' => array(
                         'controller' => 'Admin\Controller\Index',
                         'action'     => 'index',
@@ -73,6 +73,7 @@ return array(
         'invokables' => array(
             'Admin\Form\AddRole'        => 'Admin\Form\AddRoleForm',
             'Admin\Form\UpdateRole'     => 'Admin\Form\UpdateRoleForm',
+            'Admin\Form\Fieldset\AddFieldset' => 'Admin\Form\Fieldset\AddRoleFieldset'
         ),
     ),
     'service_manager' => array(
@@ -113,29 +114,29 @@ return array(
     'navigation' => array(
         'admin' => array(
             'admin' => array(
-                'label' => 'Backend',
-                'route' => 'backend',
+                'label' => 'backoffice',
+                'route' => 'backoffice',
             ),
             'rights' => array(
                 'label' => 'Rights management',
-                'route' => 'backend/rights',
+                'route' => 'backoffice/rights',
                 'controller' => 'Admin\Controller\Rights',
                 'pages' => array(
                     array(
                         'label' => 'Add',
-                        'route' => 'backend/rights/addRole',
+                        'route' => 'backoffice/rights/addRole',
                         'controller' => 'Admin\Controller\Rights',
                         'visible' => false,
                     ),
                     array(
                         'label' => 'delete',
-                        'route' => 'backend/rights/deleteRole',
+                        'route' => 'backoffice/rights/deleteRole',
                         'controller' => 'Admin\Controller\Rights',
                         'visible' => false,
                     ),
                     array(
                         'label' => 'update',
-                        'route' => 'backend/rights/updateRole',
+                        'route' => 'backoffice/rights/updateRole',
                         'controller' => 'Admin\Controller\Rights',
                         'visible' => false,
                     ),
@@ -164,7 +165,7 @@ return array(
     'zfc_rbac' => array(
         'guards' => array(
             'ZfcRbac\Guard\RouteGuard' => array(
-                'backend*' => array('admin'),
+                'backoffice*' => array('admin'),
             )
         )
     ),

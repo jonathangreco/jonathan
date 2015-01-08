@@ -32,15 +32,15 @@ class UpdateRoleForm extends Form
         /**
          * Fieldset pour le formulaire d'update config d'un client
          */
-        $this->add(
+        /*$this->add(
             array(
                 'name'    => 'updateRole',
                 'type'    => 'Admin\Form\Fieldset\AddRoleFieldset',
                 'options' => array(
                     'use_as_base_fieldset' => true,
-                )
+                ),
             )
-        );
+        );*/
 
         /**
          * Filtre de validation pour les formulaires

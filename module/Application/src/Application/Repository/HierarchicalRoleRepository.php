@@ -15,7 +15,7 @@ class HierarchicalRoleRepository extends EntityRepository
 	 * @param  integer $roleID
 	 * @return Query
 	 */
-	public function findAllExeptOne($roleID = 6)
+	public function findAllExeptOne($roleID)
 	{
 		$query = $this->createQueryBuilder('r');
 		$query->select('r')->where($query->expr()->notIn('r.id', $roleID));

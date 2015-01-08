@@ -32,10 +32,18 @@ class RightsController extends AbstractActionController
      */
     public function updateRoleAction()
     {
-        $request = $this->getRequest();
-        $form = $this->getServiceLocator()->get('formElementManager')->get('Admin\Form\UpdateRole');
         $view = new ViewModel();
+        
+        $request = $this->getRequest();
+        
+        $form = $this->getServiceLocator()->get('formElementManager')->get('Admin\Form\UpdateRole');
+        $fieldset = $this->getServiceLocator()->get('formElementManager')->get('Admin\Form\Fieldset\AddFieldset');
+
         $id = $this->params('id');
+
+        $fieldset->initBis($id);
+        $form->add($fieldset, array('name' => 'updateRole'));
+
         $role = $this->rights->getRole($id);
         $form->bind($role);
 
@@ -45,7 +53,7 @@ class RightsController extends AbstractActionController
                 $this->flashMessenger()->setNamespace('success')->addMessage('Your role has been updated');
                 $role = $form->getData();
                 $this->rights->updateRole($role);
-                return $this->redirect()->toRoute('backend/rights');
+                return $this->redirect()->toRoute('backoffice/rights');
             }
             $this->flashMessenger()->setNamespace('danger')
                  ->addMessage('An error occured please check informations below fields form more informations.');
@@ -75,7 +83,7 @@ class RightsController extends AbstractActionController
                 $this->flashMessenger()->setNamespace('success')->addMessage('Your role has been registered');
                 $role = $form->getData();
                 $this->rights->addRole($role);
-                return $this->redirect()->toRoute('backend/rights');
+                return $this->redirect()->toRoute('backoffice/rights');
             }
             $this->flashMessenger()->setNamespace('danger')
                  ->addMessage('An error occured please check informations below fields form more informations.');
@@ -95,6 +103,6 @@ class RightsController extends AbstractActionController
             $this->rights->deleteRole($role);
             $this->flashMessenger()->setNamespace('success')->addMessage('Your role has been deleted');
         }
-        return $this->redirect()->toRoute('backend/rights');
+        return $this->redirect()->toRoute('backoffice/rights');
     }
 }

@@ -5,5 +5,5 @@ return array(
 	'Logout' => 'Logout',
 	'Login' => 'Login',
 	'Account' => 'Account',
-	'Backend' => 'Backend',
+	'Back-office' => 'Back-office',
 );

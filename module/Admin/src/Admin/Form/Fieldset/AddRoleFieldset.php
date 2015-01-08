@@ -18,12 +18,17 @@ class AddRoleFieldset extends Fieldset implements
 {
     use ProvidesObjectManagerTrait;
 
-	public function init()
+    public function init()
+    {
+
+    }
+
+	public function initBis($roleID)
 	{
         $this->setHydrator(new DoctrineHydrator($this->getObjectManager(), 'Application\Entity\HierarchicalRole'))
             ->setObject(new HierarchicalRole());
 
-         $this->add(
+        $this->add(
              array(
                 'name' => 'id',
                 'type' => 'hidden',
@@ -44,6 +49,7 @@ class AddRoleFieldset extends Fieldset implements
             )
         );
         
+
         $this->add(
             array(
                 'name' => 'children',
@@ -57,7 +63,7 @@ class AddRoleFieldset extends Fieldset implements
                     'find_method'    => array(
                         'name'   => 'findAllExeptOne',
                         'params' => array(
-                            'criteria' => array('roleId' => $this->get('id')->getValue()),
+                            'roleID' => $roleID,
                         ),
                     )
                 ),

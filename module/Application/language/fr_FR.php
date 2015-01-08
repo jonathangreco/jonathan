@@ -5,5 +5,5 @@ return array(
 	'Logout' => 'Deconnexion',
 	'Login' => 'Connexion',
 	'Account' => 'Mon compte',
-	'Backend' => 'Administration',
+	'Back-office' => 'Administration',
 );

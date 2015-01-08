@@ -130,9 +130,9 @@ return array(
                 'label' => 'Home',
                 'route' => 'home',
             ),
-            'backend' => array(
-                'label' => 'Backend',
-                'route' => 'backend',
+            'backoffice' => array(
+                'label' => 'Back-office',
+                'route' => 'backoffice',
                 'permission' => 'admin'
             ),
         ),

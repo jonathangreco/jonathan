@@ -1,5 +1,5 @@
 <?php
-  $form->setAttribute('action', $this->url('backend/rights/updateRole', array('id' => $this->id)));
+  $form->setAttribute('action', $this->url('backoffice/rights/updateRole', array('id' => $this->id)));
   $form->setAttribute('method', 'POST');
   $elements = $form->get('updateRole')->getElements();
   $form->prepare();

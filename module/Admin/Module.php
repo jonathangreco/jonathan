@@ -47,7 +47,7 @@ class Module implements
         $match = $e->getRouteMatch();
         $controller = $e->getTarget();
         if (!$match instanceof RouteMatch
-            || 0 !== strpos($match->getMatchedRouteName(), 'backend')
+            || 0 !== strpos($match->getMatchedRouteName(), 'backoffice')
             || $controller->getEvent()->getResult()->terminate()
         ) {
             return;
