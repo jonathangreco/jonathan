@@ -26,9 +26,22 @@
                 <?php endforeach ?>
                 </td>
                 <td>
-                <?php foreach ($children as $child): ?>
+                <?php
+                /**
+                 * On affiche d'abord les permissions du role en cours 
+                 */
+                 if ($lvlPermissions = $role->getPermissions()): ?>
+                    <?php foreach ($lvlPermissions as $perm): ?>
+                        <?='<strong>' . $perm->getName() . '</strong>' . ', '?>
+                    <?php endforeach ?>
+                <?php endif ?>
+                <?php
+                /**
+                 * On affiche ensuite les permissions des roles enfants
+                 */
+                foreach ($children as $child): ?>
                     <?php foreach ($child->getPermissions() as $permission): ?>
-                        <?=$permission->getName(). ', '?>                            
+                        <?=$permission->getName(). ', '?>
                     <?php endforeach ?>
                 <?php endforeach ?>
                 </td>
