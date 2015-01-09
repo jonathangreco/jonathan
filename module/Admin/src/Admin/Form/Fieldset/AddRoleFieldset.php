@@ -20,11 +20,6 @@ class AddRoleFieldset extends Fieldset implements
 
     public function init()
     {
-
-    }
-
-	public function initBis($roleID)
-	{
         $this->setHydrator(new DoctrineHydrator($this->getObjectManager(), 'Application\Entity\HierarchicalRole'))
             ->setObject(new HierarchicalRole());
 
@@ -52,6 +47,27 @@ class AddRoleFieldset extends Fieldset implements
 
         $this->add(
             array(
+                'name' => 'permissions',
+                'type' => 'DoctrineModule\Form\Element\ObjectSelect',
+                'options' => array(
+                    'object_manager' => $this->getObjectManager(),
+                    'label' => 'Permissions',
+                    'target_class' => 'Application\Entity\Permission',
+                    'property' => 'name',
+                ),
+                'attributes' => array(
+                    'multiple' => true,
+                    'class' => 'select2 form-control',
+                ),
+            )
+        );
+
+    }
+
+	public function initBis($roleID)
+	{
+        $this->add(
+            array(
                 'name' => 'children',
                 'type' => 'DoctrineModule\Form\Element\ObjectSelect',
                 'options' => array(
@@ -66,23 +82,6 @@ class AddRoleFieldset extends Fieldset implements
                             'roleID' => $roleID,
                         ),
                     )
-                ),
-                'attributes' => array(
-                    'multiple' => true,
-                    'class' => 'select2 form-control',
-                ),
-            )
-        );
-
-        $this->add(
-            array(
-                'name' => 'permissions',
-                'type' => 'DoctrineModule\Form\Element\ObjectSelect',
-                'options' => array(
-                    'object_manager' => $this->getObjectManager(),
-                    'label' => 'Permissions',
-                    'target_class' => 'Application\Entity\Permission',
-                    'property' => 'name',
                 ),
                 'attributes' => array(
                     'multiple' => true,

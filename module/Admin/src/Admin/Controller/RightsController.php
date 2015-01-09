@@ -38,9 +38,14 @@ class RightsController extends AbstractActionController
         
         $form = $this->getServiceLocator()->get('formElementManager')->get('Admin\Form\UpdateRole');
         $fieldset = $this->getServiceLocator()->get('formElementManager')->get('Admin\Form\Fieldset\AddFieldset');
+        $fieldset->setUseAsBaseFieldset(true);
 
         $id = $this->params('id');
 
+        /**
+         * Notre méthode initBis pour afficher le champ de formulaire correctement. sans le role dont il est question de
+         * mettre à jour 
+         */
         $fieldset->initBis($id);
         $form->add($fieldset, array('name' => 'updateRole'));
 
