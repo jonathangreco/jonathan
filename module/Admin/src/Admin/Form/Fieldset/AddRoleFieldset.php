@@ -106,14 +106,14 @@ class AddRoleFieldset extends Fieldset implements
                 ),
             ),
             'children'  => array(
-                'required'   => true,
+                'required'   => false,
                 'filters'    => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
                 ),
             ),
             'permissions'  => array(
-                'required'   => true,
+                'required'   => false,
                 'filters'    => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),

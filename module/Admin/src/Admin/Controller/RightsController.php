@@ -83,7 +83,6 @@ class RightsController extends AbstractActionController
 
         if ($request->isPost()) {
             $form->setData($request->getPost());
-
             if ($form->isValid()) {
                 $this->flashMessenger()->setNamespace('success')->addMessage('Your role has been registered');
                 $role = $form->getData();
@@ -109,5 +108,28 @@ class RightsController extends AbstractActionController
             $this->flashMessenger()->setNamespace('success')->addMessage('Your role has been deleted');
         }
         return $this->redirect()->toRoute('backoffice/rights');
+    }
+
+    public function addPermissionAction()
+    {
+        $view = new ViewModel();
+
+        $form = $this->getServiceLocator()->get('formElementManager')->get('Admin\Form\AddPermission');
+        $request = $this->getRequest();
+
+        if ($request->isPost()) {
+            $form->setData($request->getPost());
+            var_dump($request->getPost(),$form->isValid());exit;
+            if ($form->isValid()) {
+                $this->flashMessenger()->setNamespace('success')->addMessage('Your permission has been registered');
+                $permission = $form->getData();
+                $this->rights->addPermission($permission);
+                return $this->redirect()->toRoute('backoffice/rights');
+            }
+            $this->flashMessenger()->setNamespace('danger')
+                 ->addMessage('An error occured please check informations below fields form more informations.');
+        }
+        $view->setVariable('form', $form);
+        return $view;
     }
 }

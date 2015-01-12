@@ -63,15 +63,33 @@ class RightsService
         $this->em->flush($role);
     }
 
+    /**
+     * Nous ajoutons un role
+     * @param HierarchicalRole $role
+     */
     public function addRole(HierarchicalRole $role)
     {
         $this->em->persist($role);
         $this->em->flush($role);
     }
 
+    /**
+     * On supprime notre role
+     * @param  HierarchicalRole $role
+     */
     public function deleteRole(HierarchicalRole $role)
     {
         $this->em->remove($role);
         $this->em->flush($role);
+    }
+
+    /**
+     * On ajoute une permission
+     * @param Permission $permission
+     */
+    public function addPermission(Permission $permission)
+    {
+        $this->em->persist($permission);
+        $this->em->flush($permission);
     }
 }

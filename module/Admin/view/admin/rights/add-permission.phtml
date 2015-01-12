@@ -1,15 +1,14 @@
 <?php
-  $form = $this->form;
-  $form->setAttribute('action', $this->url('backoffice/rights/addRole'));
-  $form->setAttribute('method', 'POST');
-  $elements = $form->get('roleFieldset');
-  $form->prepare();
+$form = $this->form;
+$form->setAttribute('action', $this->url('backoffice/rights/addPermission'));
+$form->setAttribute('method', 'POST');
+$elements = $form->get('permissionFieldset');
 ?>
 <?= $this->form()->openTag($form) ?>
 <div class="container">
-  <h1><?=$this->escapeHtml($this->translate('Add role'))?></h1>
+  <h1><?=$this->escapeHtml($this->translate('Add permission'))?></h1>
   <div class="col-xs-5">
-    <?php foreach ($elements as $elementName => $element): ?>
+    <?php foreach ($elements as $element): ?>
       <?php if ($element->getAttribute('type') !== 'hidden'): ?>
         <div class="form-group <?php if ($this->formElementErrors($element)) echo "has-error" ?>">
         <label class="control-label"><?php echo $this->formLabel($element) ?></label>
@@ -31,13 +30,8 @@
       <?php endif ?>    
     <?php endforeach ?>
     
-    <?= $this->formHidden($this->form->get('add_role_csrf')) ?>
+    <?= $this->formHidden($this->form->get('add_perm_csrf')) ?>
     <?= $this->formSubmit($form->get('submitAdd')->setAttribute('class', 'btn btn-success'))?>
     <?= $this->form()->closeTag()?>
   </div>
-</div>
-
-<script type="text/javascript">
-  $('.select2').select2();
-</script>
 </div>

@@ -7,7 +7,7 @@ namespace Admin\Form;
 
 use Zend\Form\Form;
 
-class AddRoleForm extends Form
+class AddPermissionForm extends Form
 {
     public function init()
     {
@@ -18,7 +18,7 @@ class AddRoleForm extends Form
         $this->add(
             array(
                 'type' => 'Zend\Form\Element\Csrf',
-                'name' => 'add_role_csrf',
+                'name' => 'add_perm_csrf',
                 'options' => array(
                     'csrf_options' => array(
                         'timeout' => 300,
@@ -28,32 +28,22 @@ class AddRoleForm extends Form
             )
         );
 
-        /**
-         * Fieldset pour le formulaire d'update config d'un client
-         */
         $this->add(
             array(
-                'name'    => 'roleFieldset',
-                'type'    => 'Admin\Form\Fieldset\AddRoleFieldset',
+                'type'    => 'Admin\Form\Fieldset\AddPermFieldset',
                 'options' => array(
                     'use_as_base_fieldset' => true,
                 )
             )
         );
 
-        /**
-         * Filtre de validation pour les formulaires
-         */
-        $this->setValidationGroup(
-            array(
-                'roleFieldset' => array(
-                    'name',
-                    'children',
-                    'permissions'
-                ),
-                'add_role_csrf'
-            )
-        );
+
+        $this->setValidationGroup(array(
+            'add_perm_csrf',
+            'permissionFieldset' => array(
+                'name',
+            ),
+        ));
 
         /**
          * Bouton de validation pour le formulaire update
