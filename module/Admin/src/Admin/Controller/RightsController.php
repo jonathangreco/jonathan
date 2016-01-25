@@ -119,7 +119,6 @@ class RightsController extends AbstractActionController
 
         if ($request->isPost()) {
             $form->setData($request->getPost());
-            var_dump($request->getPost(),$form->isValid());exit;
             if ($form->isValid()) {
                 $this->flashMessenger()->setNamespace('success')->addMessage('Your permission has been registered');
                 $permission = $form->getData();
